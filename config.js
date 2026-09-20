@@ -44,7 +44,6 @@ const CONFIG = {
 
   // Section 2: Photo-Only Story Timeline
   timelinePhotos: [
-    "images/photo1.jpg",
     "images/photo2.jpg"
   ],
 
