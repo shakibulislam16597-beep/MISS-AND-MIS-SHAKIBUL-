@@ -1,0 +1,1364 @@
+/* ==========================================================================
+   OUR SECRET - STYLESHEET
+   Soft Pastel Romantic Theme (Blush Pink, Cream, Lavender, Warm Rose)
+   Dark/Light Mode Compatible & Mobile-First Design
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties & Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Font Families */
+  --font-heading: 'Dancing Script', 'Galada', cursive;
+  --font-handwriting: 'Caveat', 'Galada', cursive;
+  --font-body: 'Nunito', 'Hind Siliguri', sans-serif;
+  --font-bengali: 'Hind Siliguri', 'Galada', sans-serif;
+
+  /* Color Palette - Light Romantic Pastel */
+  --bg-primary: #fffafb;
+  --bg-secondary: #fef1f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fff5f8;
+  --bg-header: rgba(255, 250, 251, 0.85);
+
+  --text-main: #4a3b43;
+  --text-muted: #7d6874;
+  --text-light: #a38c99;
+
+  --accent-pink: #ff9ebb;
+  --accent-blush: #ffd1dc;
+  --accent-rose: #e65c83;
+  --accent-lavender: #e2d3f5;
+  --accent-gold: #f4d35e;
+
+  --border-color: rgba(255, 158, 187, 0.25);
+  --border-glow: rgba(230, 92, 131, 0.4);
+
+  --shadow-sm: 0 4px 15px rgba(255, 182, 193, 0.2);
+  --shadow-md: 0 8px 25px rgba(230, 92, 131, 0.15);
+  --shadow-lg: 0 15px 40px rgba(218, 112, 144, 0.25);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --bg-primary: #1a1217;
+  --bg-secondary: #261821;
+  --bg-card: #2e1d28;
+  --bg-card-hover: #3a2533;
+  --bg-header: rgba(26, 18, 23, 0.85);
+
+  --text-main: #fcebf2;
+  --text-muted: #d4b8c7;
+  --text-light: #a8889b;
+
+  --accent-pink: #ff7597;
+  --accent-blush: #4a2838;
+  --accent-rose: #ff4d7d;
+  --accent-lavender: #3d294d;
+
+  --border-color: rgba(255, 117, 151, 0.2);
+  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Layout
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
+}
+
+/* Canvas Floating Hearts Background Overlay */
+.hearts-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header & Navigation
+   -------------------------------------------------------------------------- */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: var(--bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-logo .heart-pulse {
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--accent-rose);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: var(--accent-pink);
+  background: var(--bg-card-hover);
+}
+
+/* Animated Sound Wave for Music Button */
+.sound-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  margin-left: 4px;
+}
+
+.sound-wave span {
+  width: 3px;
+  height: 100%;
+  background-color: var(--accent-rose);
+  border-radius: 2px;
+  animation: soundWave 1.2s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.sound-wave span:nth-child(2) { animation-delay: 0.2s; }
+.sound-wave span:nth-child(3) { animation-delay: 0.4s; }
+
+.music-playing .sound-wave span {
+  animation-play-state: running;
+}
+
+@keyframes soundWave {
+  0% { height: 20%; }
+  100% { height: 100%; }
+}
+
+/* --------------------------------------------------------------------------
+   4. Section Headers & Typography
+   -------------------------------------------------------------------------- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1.2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--accent-rose);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--text-main);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, var(--accent-pink), transparent);
+}
+
+.section-divider span {
+  padding: 0 0.8rem;
+  font-size: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero Section
+   -------------------------------------------------------------------------- */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 90px;
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 70%);
+}
+
+.hero-content {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--accent-rose);
+  font-family: var(--font-handwriting);
+  font-size: 1.3rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.2rem;
+}
+
+.couple-names {
+  font-family: var(--font-heading);
+  font-size: 4.2rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(230, 92, 131, 0.25);
+}
+
+.heart-icon {
+  display: inline-block;
+  animation: heartPulse 1.2s ease infinite;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.25); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.25); }
+  70% { transform: scale(1); }
+}
+
+.hero-subtitle {
+  font-family: var(--font-bengali);
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* Hero Ludo App Icon Button */
+.hero-ludo-wrapper {
+  margin-bottom: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ludo-app-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ludo-app-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-lavender));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 3rem;
+  box-shadow: 0 10px 25px rgba(255, 158, 187, 0.4), 0 0 15px rgba(226, 211, 245, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .ludo-app-icon {
+  background: linear-gradient(135deg, #ff7597, #4a2838);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 117, 151, 0.3);
+  border-color: rgba(255, 117, 151, 0.3);
+}
+
+.ludo-app-btn:hover .ludo-app-icon {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(230, 92, 131, 0.45), 0 0 20px rgba(255, 158, 187, 0.6);
+}
+
+.ludo-app-btn:active {
+  transform: scale(0.92);
+}
+
+.ludo-app-label {
+  font-family: var(--font-handwriting);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  letter-spacing: 0.5px;
+}
+
+/* Card Blur Container */
+.card-blur {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+}
+
+/* Live Counter Grid */
+.counter-wrapper {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.counter-title {
+  font-family: var(--font-handwriting);
+  font-size: 1.8rem;
+  color: var(--text-main);
+  margin-bottom: 1.2rem;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.counter-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-fast);
+}
+
+.counter-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-rose);
+  box-shadow: var(--shadow-sm);
+}
+
+.counter-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  line-height: 1;
+
+}
+
+.counter-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-top: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.counter-subnote {
+  font-family: var(--font-bengali);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* Surprise Button */
+.surprise-btn {
+  background: linear-gradient(135deg, var(--accent-rose), var(--accent-pink));
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.15rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(230, 92, 131, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: var(--transition-smooth);
+}
+
+.surprise-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(230, 92, 131, 0.5);
+}
+
+.pulse-glow {
+  animation: buttonGlow 2.5s infinite;
+}
+
+@keyframes buttonGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(230, 92, 131, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(230, 92, 131, 0.8); }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent-rose);
+  font-size: 1.4rem;
+  animation: bounce 2s infinite;
+  text-decoration: none;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+  40% { transform: translate(-50%, -10px); }
+  60% { transform: translate(-50%, -5px); }
+}
+
+/* --------------------------------------------------------------------------
+   6. Our Story Timeline Section
+   -------------------------------------------------------------------------- */
+.story-section {
+  background-color: var(--bg-primary);
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent-blush), var(--accent-rose), var(--accent-lavender));
+  transform: translateX(-50%);
+  border-radius: var(--radius-full);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3.5rem;
+  width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 2.5rem;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 2.5rem;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 3px solid var(--accent-rose);
+  color: var(--accent-rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  z-index: 5;
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+  right: -18px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -18px;
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.6rem;
+  box-shadow: 0 10px 30px rgba(255, 158, 187, 0.25);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(230, 92, 131, 0.35);
+  border-color: var(--accent-pink);
+}
+
+.timeline-img-wrapper {
+  width: 100%;
+  height: 280px;
+  border-radius: calc(var(--radius-md) - 0.4rem);
+  overflow: hidden;
+  position: relative;
+}
+
+.timeline-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: block;
+}
+
+.timeline-card:hover .timeline-img-wrapper img {
+  transform: scale(1.08);
+}
+
+/* --------------------------------------------------------------------------
+   7. Photo Gallery Section & Masonry Grid
+   -------------------------------------------------------------------------- */
+.gallery-section {
+  background-color: var(--bg-secondary);
+}
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+.gallery-card {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-img-box {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-info {
+  color: #ffffff;
+}
+
+.gallery-caption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.gallery-caption-bn {
+  font-family: var(--font-bengali);
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   8. Love Letters Section (Envelope Cards)
+   -------------------------------------------------------------------------- */
+.letters-section {
+  background-color: var(--bg-primary);
+}
+
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.envelope-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+}
+
+.envelope-card::before {
+  content: '💌';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 4rem;
+  opacity: 0.1;
+  transition: var(--transition-smooth);
+}
+
+.envelope-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-rose);
+  box-shadow: var(--shadow-md);
+}
+
+.envelope-card:hover::before {
+  transform: scale(1.2) rotate(15deg);
+  opacity: 0.2;
+}
+
+.envelope-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.8rem;
+  width: fit-content;
+}
+
+.envelope-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.envelope-title-bn {
+  font-family: var(--font-bengali);
+  font-size: 1.05rem;
+  color: var(--accent-rose);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.envelope-preview {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+
+.envelope-action {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Reasons I Love You Section (3D Flip Cards)
+   -------------------------------------------------------------------------- */
+.reasons-section {
+  background-color: var(--bg-secondary);
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  height: 240px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.flip-card-front {
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+  color: var(--text-main);
+  transform: rotateY(180deg);
+  border-color: var(--accent-pink);
+}
+
+.reason-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.reason-number {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--accent-rose);
+}
+
+.reason-number-bn {
+  font-family: var(--font-bengali);
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.reason-text {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.reason-text-bn {
+  font-family: var(--font-bengali);
+  font-size: 0.95rem;
+  color: var(--accent-rose);
+}
+
+.flip-hint {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   10. Our Promises Section
+   -------------------------------------------------------------------------- */
+.promises-section {
+  background-color: var(--bg-primary);
+}
+
+.promises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.promise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.promise-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-pink);
+  box-shadow: var(--shadow-md);
+}
+
+.promise-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+.promise-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.promise-title-bn {
+  font-family: var(--font-bengali);
+  font-size: 1rem;
+  color: var(--accent-rose);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.promise-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.promise-text-bn {
+  font-family: var(--font-bengali);
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-heart {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+.footer-main-text {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--accent-rose);
+  margin-bottom: 0.3rem;
+}
+
+.footer-sub-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--accent-rose);
+}
+
+/* --------------------------------------------------------------------------
+   12. Modals (Lightbox, Letters, Surprise)
+   -------------------------------------------------------------------------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Lightbox Modal */
+.lightbox-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image-wrapper {
+  position: relative;
+  max-width: 800px;
+  text-align: center;
+}
+
+.lightbox-image-wrapper img {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-family: var(--font-bengali);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  z-index: 5;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox-prev { left: -60px; }
+.lightbox-next { right: -60px; }
+
+/* Love Letter Reader Modal */
+.letter-modal-card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 580px;
+  padding: 2.5rem;
+  background: var(--bg-card);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.letter-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.letter-modal-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.letter-header h3 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--accent-rose);
+}
+
+.letter-modal-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.letter-body {
+  margin-bottom: 1.5rem;
+}
+
+.letter-text-en {
+  font-family: var(--font-handwriting);
+  font-size: 1.5rem;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  white-space: pre-line;
+}
+
+.letter-text-bn {
+  font-family: var(--font-bengali);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  white-space: pre-line;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 1rem;
+}
+
+.letter-footer {
+  text-align: right;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--accent-rose);
+}
+
+/* Surprise Modal */
+.surprise-modal-card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 520px;
+  padding: 2.5rem;
+  text-align: center;
+  background: var(--bg-card);
+}
+
+.glow-border {
+  border: 2px solid var(--accent-pink);
+  box-shadow: 0 0 25px rgba(255, 158, 187, 0.4);
+}
+
+.surprise-badge {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  background: var(--bg-secondary);
+  color: var(--accent-rose);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.surprise-title {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  color: var(--accent-rose);
+  margin-bottom: 1rem;
+}
+
+.surprise-heart-anim {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: heartPulse 1s infinite;
+}
+
+.surprise-msg-en {
+  font-family: var(--font-handwriting);
+  font-size: 1.6rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.surprise-msg-bn {
+  font-family: var(--font-bengali);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.surprise-action-btn {
+  background: linear-gradient(135deg, var(--accent-rose), var(--accent-pink));
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.surprise-action-btn:hover {
+  transform: scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   13. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .couple-names {
+    font-size: 3rem;
+  }
+
+  .counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  .counter-number {
+    font-size: 1.8rem;
+  }
+
+  /* Timeline mobile column layout */
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 3.2rem !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+  }
+
+  .timeline-dot {
+    left: 2px !important;
+  }
+
+  .timeline-location {
+    justify-content: flex-start !important;
+  }
+
+  .masonry-grid {
+    column-count: 1;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
+}
+
+@media (max-width: 480px) {
+  .couple-names {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .counter-box {
+    padding: 0.6rem 0.2rem;
+  }
+
+  .counter-number {
+    font-size: 1.5rem;
+  }
+
+  .counter-label {
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Ludo Together 🎲 💕 Shakibul & Jannatul</title>
+
+  <!-- Meta tags for social preview & SEO -->
+  <meta name="description" content="Play Ludo real-time online or offline together with your love! Shakibul & Jannatul.">
+  <meta property="og:title" content="Play Ludo Together 🎲 💕 Shakibul & Jannatul">
+  <meta property="og:description" content="A cute romantic Ludo game made for Shakibul & Jannatul.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+
+  <!-- Google Fonts: Dancing Script, Caveat, Hind Siliguri, Galada, Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Galada&family=Hind+Siliguri:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- PeerJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ludo.css">
+</head>
+<body>
+
+  <!-- Floating Hearts Canvas Background -->
+  <canvas id="heartsCanvas" class="hearts-canvas"></canvas>
+
+  <!-- Navigation / Header Bar -->
+  <header class="top-header" id="topHeader">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <i class="fas fa-arrow-left"></i> <span id="brandName">Our Secret 💕</span>
+      </a>
+
+      <div class="header-actions">
+        <!-- Sound Effects Toggle Button -->
+        <button id="soundToggle" class="icon-btn" aria-label="Toggle Sound Effects" title="Toggle Sound Effects">
+          <i class="fas fa-volume-up" id="soundIcon"></i>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="icon-btn theme-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="ludo-main-container">
+    <!-- Mode Selection Panel -->
+    <section id="modeSelection" class="mode-selection-card card-blur">
+      <h1 class="ludo-title">Play Ludo Together 🎲</h1>
+      <p class="ludo-subtitle">Shakibul (Red 🔴) & Jannatul (Yellow 🟡)</p>
+
+      <div class="mode-options">
+        <button id="btnPassAndPlay" class="ludo-btn btn-primary">
+          <i class="fas fa-users"></i> Pass & Play (Offline)
+        </button>
+        <button id="btnCreateRoom" class="ludo-btn btn-secondary">
+          <i class="fas fa-plus-circle"></i> Create Online Room
+        </button>
+      </div>
+
+      <div class="join-room-box">
+        <div class="join-input-group">
+          <input type="text" id="roomCodeInput" placeholder="Enter 5-character Code" maxlength="5">
+          <button id="btnJoinRoom" class="ludo-btn btn-accent">
+            <i class="fas fa-link"></i> Join Room
+          </button>
+        </div>
+      </div>
+
+      <!-- Created Room Details (Hidden initially) -->
+      <div id="roomDetails" class="room-details-box hidden">
+        <p class="room-code-label">Share this Room Code with your love:</p>
+        <div class="code-display-row">
+          <span id="createdCodeDisplay" class="code-badge">-----</span>
+          <button id="btnCopyCode" class="ludo-btn btn-sm">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+        <p id="roomStatusText" class="status-pulse-text"><i class="fas fa-spinner fa-spin"></i> Waiting for partner to join...</p>
+      </div>
+    </section>
+
+    <!-- Game View (Hidden until mode selected / room joined) -->
+    <section id="gameSection" class="game-section hidden">
+      <!-- Header bar above board with Status and Connection Info -->
+      <div class="game-info-bar card-blur">
+        <div class="player-badge player-red" id="badgeRed">
+          <span class="avatar">❤️</span>
+          <span class="p-name">Shakibul</span>
+          <span class="token-count" id="redScore">0/4</span>
+        </div>
+
+        <div class="turn-indicator" id="turnIndicator">
+          <span id="turnText">Shakibul's Turn!</span>
+          <span id="turnSubtext" class="turn-sub">Roll the dice</span>
+        </div>
+
+        <div class="player-badge player-yellow" id="badgeYellow">
+          <span class="avatar">💛</span>
+          <span class="p-name">Jannatul</span>
+          <span class="token-count" id="yellowScore">0/4</span>
+        </div>
+      </div>
+
+      <!-- Ludo Board Wrapper -->
+      <div class="board-wrapper card-blur">
+        <div id="ludoBoard" class="ludo-board">
+          <!-- Dynamically constructed or template grid elements in JS -->
+        </div>
+      </div>
+
+      <!-- Dice Controls Footer -->
+      <div class="dice-controls-card card-blur">
+        <div class="connection-status-tag" id="connectionTag">
+          <i class="fas fa-wifi"></i> <span id="connectionText">Pass & Play Mode</span>
+        </div>
+
+        <div class="dice-area">
+          <div id="diceCube" class="dice-cube" title="Click to Roll">
+            <div class="dice-face face-1"><span></span></div>
+          </div>
+          <button id="btnRollDice" class="ludo-btn btn-roll">
+            <i class="fas fa-dice"></i> Roll Dice
+          </button>
+        </div>
+
+        <div class="game-actions">
+          <button id="btnChangeMode" class="btn-text">
+            <i class="fas fa-arrow-left"></i> Change Mode
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Error / Disconnection Modal -->
+  <div id="errorModal" class="modal ludo-modal" aria-hidden="true" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="ludo-modal-card card-blur">
+      <div class="error-icon">💔</div>
+      <h3 class="modal-title" id="errorModalTitle">Connection Lost</h3>
+      <p class="modal-message" id="errorModalMsg">Connection to partner failed. Please check the room code or try again.</p>
+      <div class="modal-actions">
+        <button id="btnRetryConnection" class="ludo-btn btn-primary">
+          <i class="fas fa-redo"></i> Retry
+        </button>
+        <button id="btnErrorBack" class="ludo-btn btn-secondary">
+          <i class="fas fa-home"></i> Back to Menu
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Winner Victory Modal -->
+  <div id="winModal" class="modal ludo-modal" aria-hidden="true" role="dialog">
+    <div class="modal-overlay"></div>
+    <div class="ludo-modal-card card-blur glow-border">
+      <div class="win-crown">👑</div>
+      <h2 class="modal-title" id="winTitle">Shakibul Wins! ❤️</h2>
+      <p class="win-love-message" id="winLoveMsg">Our love wins every game of life! Forever & Always 💕</p>
+
+      <div class="modal-actions">
+        <button id="btnPlayAgain" class="ludo-btn btn-primary">
+          <i class="fas fa-redo"></i> Play Again
+        </button>
+        <button id="btnWinBack" class="ludo-btn btn-secondary">
+          <i class="fas fa-heart"></i> Back to Our Story
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="script.js"></script> <!-- Includes particle animation and common theme logic -->
+  <script src="ludo.js"></script>
+</body>
+</html>

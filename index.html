@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Secret 💕 Shakibul & Jannatul</title>
+
+  <!-- Meta tags for social preview & SEO -->
+  <meta name="description" content="A secret romantic space for Shakibul & Jannatul celebrating love, memories, and togetherness.">
+  <meta property="og:title" content="Our Secret 💕 Shakibul & Jannatul">
+  <meta property="og:description" content="Forever Ours ❤️ - A romantic single-page journey of Shakibul & Jannatul.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+
+  <!-- Google Fonts: Dancing Script, Caveat, Hind Siliguri, Galada, Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Galada&family=Hind+Siliguri:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Hearts Canvas Background -->
+  <canvas id="heartsCanvas" class="hearts-canvas"></canvas>
+
+  <!-- Navigation / Header Bar -->
+  <header class="top-header" id="topHeader">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo">
+        <span class="heart-pulse">💖</span> <span id="brandName">Shakibul & Jannatul</span>
+      </a>
+
+      <div class="header-actions">
+        <!-- Music Control Button -->
+        <button id="musicToggle" class="icon-btn music-btn" aria-label="Toggle Background Music" title="Play/Pause Romantic Music">
+          <i class="fas fa-music"></i>
+          <span class="sound-wave" id="soundWave">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="icon-btn theme-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hidden HTML5 Audio Element -->
+  <audio id="bgMusic" loop preload="auto"></audio>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <div class="badge-tag" id="heroBadge">
+          <i class="fas fa-sparkles"></i> <span id="taglineText">Forever Ours ❤️</span>
+        </div>
+
+        <h1 class="couple-names glow-text" id="coupleNamesTitle">
+          Shakibul <span class="heart-icon">💕</span> Jannatul
+        </h1>
+
+        <p class="hero-subtitle" id="heroSubtitle">আমাদের ভালোবাসার গোপন সুন্দর অধ্যায়</p>
+
+        <!-- Ludo App Icon Link -->
+        <div class="hero-ludo-wrapper">
+          <a href="ludo.html" class="ludo-app-btn" aria-label="Play Ludo Together">
+            <div class="ludo-app-icon">
+              <i class="fas fa-dice"></i>
+            </div>
+            <span class="ludo-app-label">Ludo 🎲</span>
+          </a>
+        </div>
+
+        <!-- Live Relationship Counter -->
+        <div class="counter-wrapper card-blur">
+          <h2 class="counter-title" id="counterTitle">Together For</h2>
+          <div class="counter-grid" id="counterGrid">
+            <div class="counter-box">
+              <span class="counter-number" id="countYears">0</span>
+              <span class="counter-label">Years</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-number" id="countMonths">0</span>
+              <span class="counter-label">Months</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-number" id="countDays">0</span>
+              <span class="counter-label">Days</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-number" id="countHours">0</span>
+              <span class="counter-label">Hours</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-number" id="countMinutes">0</span>
+              <span class="counter-label">Mins</span>
+            </div>
+            <div class="counter-box">
+              <span class="counter-number" id="countSeconds">0</span>
+              <span class="counter-label">Secs</span>
+            </div>
+          </div>
+          <p class="counter-subnote" id="counterSubnote">প্রতিটি সেকেন্ডে তোমাকেই ভালোবাসি</p>
+        </div>
+
+        <!-- Surprise Button Action -->
+        <div class="hero-cta">
+          <button id="surpriseBtn" class="surprise-btn pulse-glow">
+            <i class="fas fa-gift"></i> <span id="surpriseBtnLabel">Click for a Surprise! 🎁</span>
+          </button>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#story" class="scroll-indicator" aria-label="Scroll Down">
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- 2. Our Story Section -->
+    <section id="story" class="section story-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge"><i class="fas fa-heart"></i> Our Journey</span>
+          <h2 class="section-title">Our Story Timeline</h2>
+          <div class="section-divider"><span>🌸</span></div>
+        </div>
+
+        <div class="timeline" id="storyTimeline">
+          <!-- Dynamically populated via script.js from config.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 3. Photo Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge"><i class="fas fa-camera-retro"></i> Sweet Moments</span>
+          <h2 class="section-title">Photo Gallery</h2>
+          <p class="section-subtitle">Click any picture to open full slideshow</p>
+          <div class="section-divider"><span>📷</span></div>
+        </div>
+
+        <div class="masonry-grid" id="photoGallery">
+          <!-- Dynamically populated via script.js from config.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. Love Letters Section -->
+    <section id="letters" class="section letters-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge"><i class="fas fa-envelope-open-text"></i> From My Heart</span>
+          <h2 class="section-title">Love Letters</h2>
+          <p class="section-subtitle">Tap an envelope to read what I want to tell you</p>
+          <div class="section-divider"><span>💌</span></div>
+        </div>
+
+        <div class="letters-grid" id="loveLettersGrid">
+          <!-- Dynamically populated via script.js from config.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 5. Reasons I Love You Section -->
+    <section id="reasons" class="section reasons-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge"><i class="fas fa-magic"></i> Infinite Reasons</span>
+          <h2 class="section-title">Reasons I Love You</h2>
+          <p class="section-subtitle">Hover or click cards to flip them over</p>
+          <div class="section-divider"><span>✨</span></div>
+        </div>
+
+        <div class="reasons-grid" id="reasonsGrid">
+          <!-- Dynamically populated via script.js from config.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 6. Our Promises Section -->
+    <section id="promises" class="section promises-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge"><i class="fas fa-hand-holding-heart"></i> Our Vows</span>
+          <h2 class="section-title">Our Future & Promises</h2>
+          <div class="section-divider"><span>💍</span></div>
+        </div>
+
+        <div class="promises-grid" id="promisesGrid">
+          <!-- Dynamically populated via script.js from config.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- 7. Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-heart">💖</div>
+      <p id="footerMainText" class="footer-main-text">Made with endless love by Shakibul 💕</p>
+      <p id="footerSubText" class="footer-sub-text">Designed for Jannatul • Forever & Always</p>
+      <div class="footer-links">
+        <a href="#hero">Back to Top <i class="fas fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Lightbox Modal for Photo Gallery -->
+  <div id="lightboxModal" class="modal lightbox-modal" aria-hidden="true" role="dialog">
+    <div class="modal-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-content">
+      <button class="modal-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous Photo"><i class="fas fa-chevron-left"></i></button>
+
+      <div class="lightbox-image-wrapper">
+        <img id="lightboxImg" src="" alt="Gallery Photo Fullview">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+      </div>
+
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next Photo"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+
+  <!-- Love Letter Reader Modal -->
+  <div id="letterModal" class="modal letter-modal" aria-hidden="true" role="dialog">
+    <div class="modal-overlay" id="letterOverlay"></div>
+    <div class="letter-modal-card card-blur">
+      <button class="modal-close" id="letterClose" aria-label="Close Letter">&times;</button>
+      <div class="letter-header">
+        <span class="letter-modal-icon">💌</span>
+        <h3 id="letterModalTitle">Love Letter</h3>
+        <span id="letterModalDate" class="letter-modal-date"></span>
+      </div>
+      <div class="letter-body">
+        <p id="letterModalContent" class="letter-text-en"></p>
+        <p id="letterModalContentBn" class="letter-text-bn"></p>
+      </div>
+      <div class="letter-footer">
+        <span>Forever & Always ❤️</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Surprise Modal -->
+  <div id="surpriseModal" class="modal surprise-modal" aria-hidden="true" role="dialog">
+    <div class="modal-overlay" id="surpriseOverlay"></div>
+    <div class="surprise-modal-card card-blur glow-border">
+      <button class="modal-close" id="surpriseClose" aria-label="Close Surprise">&times;</button>
+      <div class="surprise-badge">🎁 Romantic Surprise</div>
+      <h3 id="surpriseModalTitle" class="surprise-title">A Special Message Just For You ❤️</h3>
+      <div class="surprise-body">
+        <div class="surprise-heart-anim">💖</div>
+        <p id="surpriseModalMessageEn" class="surprise-msg-en"></p>
+        <p id="surpriseModalMessageBn" class="surprise-msg-bn"></p>
+      </div>
+      <button class="surprise-action-btn" id="surpriseCloseBtn">I Love You Too! 💕</button>
+    </div>
+  </div>
+
+
+  <!-- Load External Scripts -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

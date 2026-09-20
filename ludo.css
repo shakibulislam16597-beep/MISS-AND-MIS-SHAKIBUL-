@@ -1,0 +1,566 @@
+/* ==========================================================================
+   OUR SECRET - LUDO GAME STYLESHEET
+   Matching Soft Pastel Romantic Theme (Blush Pink, Cream, Lavender, Red & Yellow)
+   Mobile-First & Touch-Friendly Design
+   ========================================================================== */
+
+.ludo-main-container {
+  padding-top: 80px;
+  padding-bottom: 1.5rem;
+  max-width: 580px;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   1. Mode Selection Card
+   -------------------------------------------------------------------------- */
+.mode-selection-card {
+  width: 92%;
+  max-width: 480px;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  margin: 1rem auto;
+}
+
+.ludo-title {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  color: var(--accent-rose);
+  margin-bottom: 0.2rem;
+}
+
+.ludo-subtitle {
+  font-family: var(--font-bengali);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.mode-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ludo-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+}
+
+.ludo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.ludo-btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-rose), var(--accent-pink));
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--accent-rose);
+  border: 1px solid var(--border-color);
+}
+
+.btn-accent {
+  background: #f4a261;
+  color: #ffffff;
+}
+
+.btn-roll {
+  background: linear-gradient(135deg, #e65c83, #ff7597);
+  color: #ffffff;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  transition: var(--transition-fast);
+}
+
+.btn-text:hover {
+  color: var(--accent-rose);
+}
+
+.join-room-box {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.join-input-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.join-input-group input {
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  width: 180px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.join-input-group input:focus {
+  border-color: var(--accent-rose);
+  box-shadow: 0 0 10px rgba(230, 92, 131, 0.3);
+}
+
+.room-details-box {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.room-code-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.code-display-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.code-badge {
+  font-family: monospace;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent-rose);
+  background: var(--bg-card);
+  padding: 0.3rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  letter-spacing: 4px;
+}
+
+.status-pulse-text {
+  font-size: 0.85rem;
+  color: var(--accent-rose);
+  font-weight: 600;
+  animation: pulse 1.5s infinite;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Game View Section & Info Bar
+   -------------------------------------------------------------------------- */
+.game-section {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.game-info-bar {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.player-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.player-red {
+  background: rgba(230, 92, 131, 0.12);
+  color: #e65c83;
+}
+
+.player-yellow {
+  background: rgba(244, 211, 94, 0.2);
+  color: #d4a307;
+}
+
+[data-theme="dark"] .player-yellow {
+  color: #f4d35e;
+}
+
+.player-badge.active-turn {
+  border-color: currentColor;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px currentColor;
+}
+
+.player-badge .avatar { font-size: 1.2rem; }
+.player-badge .p-name { font-weight: 700; font-size: 0.85rem; }
+.player-badge .token-count { font-size: 0.75rem; opacity: 0.8; font-weight: 800; }
+
+.turn-indicator {
+  text-align: center;
+}
+
+#turnText {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.turn-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   3. Ludo Board Layout (15x15 Grid)
+   -------------------------------------------------------------------------- */
+.board-wrapper {
+  width: 95vw;
+  max-width: 440px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.ludo-board {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  background: #ffffff;
+  border: 2px solid var(--text-main);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+[data-theme="dark"] .ludo-board {
+  background: #251822;
+  border-color: var(--accent-pink);
+}
+
+/* Grid Cell Styles */
+.cell {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .cell {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Yard Regions */
+.yard {
+  grid-span: 6;
+  padding: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yard-red {
+  grid-area: 1 / 1 / 7 / 7;
+  background: #ffb6c1;
+}
+
+.yard-green {
+  grid-area: 1 / 10 / 7 / 16;
+  background: #c8e6c9;
+  opacity: 0.4; /* Inactive player */
+}
+
+.yard-yellow {
+  grid-area: 10 / 10 / 16 / 16;
+  background: #fff59d;
+}
+
+.yard-blue {
+  grid-area: 10 / 1 / 16 / 7;
+  background: #bbdefb;
+  opacity: 0.4; /* Inactive player */
+}
+
+.yard-inner {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10%;
+  padding: 10%;
+}
+
+[data-theme="dark"] .yard-inner {
+  background: #1a1217;
+}
+
+.home-spot {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Center Home */
+.center-home {
+  grid-area: 7 / 7 / 10 / 10;
+  position: relative;
+  background: #fcebf2;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-home-heart {
+  font-size: 1.8rem;
+  animation: pulse 1.5s infinite;
+  z-index: 2;
+}
+
+.center-home-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.tri-red {
+  top: 0; left: 0; right: 0;
+  border-width: 25px 25px 0 25px;
+  border-color: #ff4d7d transparent transparent transparent;
+}
+
+.tri-yellow {
+  bottom: 0; left: 0; right: 0;
+  border-width: 0 25px 25px 25px;
+  border-color: transparent transparent #f4d35e transparent;
+}
+
+/* Path Specific Colors */
+.path-red { background: #ff7597 !important; }
+.path-yellow { background: #f4d35e !important; }
+
+.safe-cell::after {
+  content: '★';
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 0.95rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .safe-cell::after {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Tokens */
+.token {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  position: relative;
+}
+
+.token-red {
+  background: radial-gradient(circle at 35% 35%, #ff7597, #e65c83);
+}
+
+.token-yellow {
+  background: radial-gradient(circle at 35% 35%, #ffeb3b, #f4a261);
+}
+
+.token.selectable {
+  animation: tokenHighlight 0.8s infinite alternate;
+  box-shadow: 0 0 12px #ffffff, 0 0 15px currentColor;
+  transform: scale(1.15);
+  z-index: 20;
+}
+
+@keyframes tokenHighlight {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.25); }
+}
+
+/* Multiple tokens on same cell */
+.cell-multi-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  padding: 1px;
+}
+
+.cell-multi-tokens .token {
+  width: 45%;
+  height: 45%;
+  border-width: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Dice Controls Footer
+   -------------------------------------------------------------------------- */
+.dice-controls-card {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem;
+  gap: 0.6rem;
+}
+
+.connection-status-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dice-area {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 3D/2D Animated Dice */
+.dice-cube {
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border: 2px solid var(--accent-rose);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent-rose);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.dice-cube.rolling {
+  animation: diceRollAnim 0.5s linear infinite;
+}
+
+@keyframes diceRollAnim {
+  0% { transform: rotate(0deg) scale(0.9); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(0.9); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   5. Modals & Victory Celebration
+   -------------------------------------------------------------------------- */
+.ludo-modal-card {
+  width: 90%;
+  max-width: 440px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.error-icon, .win-crown {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.win-love-message {
+  font-family: var(--font-handwriting);
+  font-size: 1.6rem;
+  color: var(--accent-rose);
+  margin: 1rem 0 1.5rem 0;
+  line-height: 1.4;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
